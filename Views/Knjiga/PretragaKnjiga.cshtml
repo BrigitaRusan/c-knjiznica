@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Pretraga Knjiga";
+}
+
+@model IEnumerable<KnjigaModel>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"]</title>
+</head>
+<body>
+
+    <h1>Pretraga Knjiga po Knjižnici</h1>
+
+    <!-- Forma za unos naziva knjižnice -->
+    <form method="get" action="@Url.Action("PretragaKnjiga", "Knjiga")">
+        <input type="text" name="nazivKnjiznice" placeholder="Unesite naziv knjižnice..." />
+        <button type="submit">Pretraži!</button>
+    </form>
+    <br/>
+    <br />
+    <h2>Rezultati pretrage</h2>
+    <br />
+    <br />
+    @if (Model != null && Model.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Naziv Knjige</th>
+                    <th>Autor</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var knjiga in Model)
+                {
+                    <tr>
+                        <td>@knjiga.Id</td>
+                        <td>@knjiga.Naziv</td>
+                        <td>@knjiga.Autor</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Nema knjiga za prikaz.</p>
+    }
+    
+</body>
+</html>

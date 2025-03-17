@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model IEnumerable<KnjiznicaModel>  // Definirajte tip modela koji će biti proslijeđen u View
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+    <h1>Udruga gradskih knjiznica</h1>
+    <a href="@Url.Action("Knjiga", "Knjiga")">Popis knjiga</a>  <!--metoda iz Controllera, mapa - action name i ruta -->
+    @if (Model != null && Model.Any()) 
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Naziv</th>
+                    <th>Adresa</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var knjiznica in Model)
+                {
+                    <tr>
+                        <td>@knjiznica.Id</td>
+                        <td>@knjiznica.Naziv</td>
+                        <td>@knjiznica.Adresa</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</body>
+</html>

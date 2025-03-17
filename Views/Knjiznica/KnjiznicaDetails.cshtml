@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Popis knjiga";  
+}
+@model KnjiznicaModel
+
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"] </title>
+</head>
+<body>
+
+    <h1> <b>Knjižnica:</b> @Model.Naziv</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <td>Adresa:</td>
+                <td>
+                    <a href="https://www.google.com/maps/search/?q=@Model.Adresa,@Model.Naziv" target="_blank">
+                        @Model.Adresa
+                    </a>
+                </td>
+            </tr>
+            <tr>
+                <td>Telefon:</td>
+                <td>@Model.Telefon</td>
+            </tr>
+            <tr>
+                <td>Godina osnivanja:</td>
+                <td>@Model.God_osnivanja.</td>
+            <tr>
+                <td>Čitaonica:</td>
+                <td>@(Model.Citaonica == "D" ? "DA" : "NE")</td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Popis knjižnica";  // naziv kartice
+}
+@model List<KnjiznicaModel>
+
+
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <title>@ViewData["Title"] </title>
+</head>
+<body>
+
+    <h1>Popis knjižnica:</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Naziv:</th>
+                <th>Adresa:</th>
+                <th>Telefon:</th>
+                <th>Godina osnivanja:</th>
+                <th>Čitaonica:</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var knjiznica in Model)
+            {
+                <tr>
+                    <td>@knjiznica.Naziv</td>
+                    <td>@knjiznica.Adresa</td>
+                    <td>@knjiznica.Telefon</td>
+                    <td>@knjiznica.God_osnivanja.</td>
+                    <td>@(knjiznica.Citaonica == "D" ? "DA" : "NE")</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</body>
+</html>
